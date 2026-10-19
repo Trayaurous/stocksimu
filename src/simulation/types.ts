@@ -1,0 +1,91 @@
+export type Regime = "calm" | "growth" | "volatile";
+export type Side = "buy" | "sell" | "short" | "cover";
+export type Candle = {
+  time: number;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+};
+export type Company = {
+  id: string;
+  symbol: string;
+  name: string;
+  sector: string;
+  intro: string;
+  color: string;
+  initial: number;
+  regime: Regime;
+};
+export type Stock = {
+  id: string;
+  price: number;
+  previousClose: number;
+  regime: Regime;
+  trend: number;
+  candles: Candle[];
+  daily: Candle[];
+};
+export type Position = {
+  id: string;
+  quantity: number;
+  average: number;
+  debt: number;
+  collateral: number;
+  proceeds: number;
+};
+export type Trade = {
+  id: number;
+  time: number;
+  stockId: string;
+  side: Side;
+  quantity: number;
+  price: number;
+  fee: number;
+  pnl: number | null;
+  forced: boolean;
+  leverage: number;
+};
+export type News = {
+  id: number;
+  time: number;
+  stockId: string;
+  title: string;
+  body: string;
+};
+export type EquityPoint = { time: number; value: number };
+export type Round = {
+  started: number;
+  ended: number;
+  equity: number;
+  trades: number;
+  drawdown: number;
+  bankrupt: boolean;
+};
+export type Game = {
+  version: 1;
+  seed: number;
+  rng: number;
+  simTime: number;
+  realAt: number;
+  started: number;
+  cash: number;
+  initial: number;
+  fees: number;
+  interest: number;
+  tradeCount: number;
+  nextId: number;
+  stocks: Stock[];
+  positions: Position[];
+  trades: Trade[];
+  news: News[];
+  equity: EquityPoint[];
+  peak: number;
+  drawdown: number;
+  bankrupt: boolean;
+  liquidations: number;
+  seen: string[];
+  favorites: string[];
+  rounds: Round[];
+};
